@@ -36,7 +36,7 @@ From the above image we can conclude that the continuous data consists of decima
 Some of the categorical variables are analyzed using count plot to see the distribution of the data. Some of the plots obtained are as follows:
 As the categorical variables cat116 and cat113 have many levels, it is unimportant and has no effect in predicting the target. Hence, these columns are dropped.
    
-     The above plots show that these variables have biased levels(less entropy), hence these are considered unimportant, and these variables are dropped.
+The above plots show that these variables have biased levels(less entropy), hence these are considered unimportant, and these variables are dropped.
 After dropping the unimportant variables, the categorical variables which resulted as important have to be converted to numeric. Categorical data has different levels for example, A, B and so on. If these categorical variables are converted to integers say 1 for A, 2 for B and so on, there are
 
 chances that the model considers 1 superior to 2 because of the numeric precedence causing erroneous results. To avoid this, the categorical variables are converted to binary form using get dummies function of pandas. and hence the categorical variables are converted to numeric by using
