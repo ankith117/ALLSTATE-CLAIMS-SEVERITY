@@ -50,12 +50,14 @@ In order to predict the loss value, we used regression to predict the loss value
 • Linear Regression
 • Random Forest Regression
 • Gradient Boosting Regressor
+
 # Linear Regression:
 The first model used is multi-linear regression. In this method, we predict the target value based on a number of predictor variables.
 We use the Linear Regression library from pyspark.ml.regression. We create an instance of the model and fit it on the training dataset by setting the number of iterations to 1000. This model is evaluated by fitting on the validation dataset and metrics were analyzed as follows:
    
 # Random Forest Regression
 Random Forest model is an ensemble method of combinations of decision trees. In this method, a new dataset is not created but rather a group of decision trees work on different bootstrap samples of dataset with random splitting criteria for splitting the node. We used this model to predict the loss values using the parameter values. The results of each decision tree are averaged, and results are obtained as a combined value.
+
 # Gradient Boosting Regressor
 Gradient Boosting Regressor is a combination of gradient descent and Boosting. It is an ensemble method of weak models. These weak models are typically, decision trees. This model has three components, a loss functions, weak learner and an additive model to reduce loss by adding models.
     
@@ -63,118 +65,7 @@ Gradient Boosting Regressor is a combination of gradient descent and Boosting. I
 The metrics we used are Mean Absolute Error, Root Mean Squared Error and R square. R square value is the ratio of sum of square of regression by the sum of square of total. As the R square value increases with the increase in features, it is not considered a useful metrics in evaluating a model. Hence, we use the Mean Absolute Error as the primary metric.
 The loss value of the training dataset is analysed to get the summary of its values, the loss value varies from a minimum of 0.67 to maximum value of 121,012.25. Hence, the mean absolute error we obtained is in thousands.
 The results obtained for each of the models used is as follows:
- 
-# Linear Regression
-For linear regression, we change the maximum number of iterations, Regularization parameter, Elastic Net Parameter in different combinations and the results are tabulated as follows:
-      Model
-    Param List
-      Root Mean Squared Error
-    Mean Absolute error
-     R^2
-    Linear Regression
-   maxIter = 1000 regParam = 0.1 solver = ‘normal’ labelCol = ‘loss’
-   2042.935078
-   1319.519984
-   0.49061896
-    Linear Regression
-   maxIter = 2000 regParam = 0.1
-solver = ‘normal’ labelCol = ‘loss’ elasticNetParam = 0.8
-   2042.764985
-   1319.282829
-   0.49059967
-    Linear Regression
-   maxIter = 1000 regParam = 0.1
-solver = ‘normal’ labelCol = ‘loss’ elasticNetParam = 0.7
-   2042.364549
-   1318.232327
-   0.49033567
-    Linear Regression
-maxIter = 1000 regParam = 0.3
-solver = ‘normal’ labelCol = ‘loss’ elasticNetParam = 0.7
-  2042.471727
-1318.984372
-  0.49041752
-     Linear Regression
- maxIter = 1000 regParam = 0.3
-solver = ‘normal’ labelCol = ‘loss’ elasticNetParam = 0.6
-     2042.506583
- 1318.882327
-    0.49042479
-     Linear Regression
-    maxIter = 5000 regParam = 0.2
-solver = ‘normal’ labelCol = ‘loss’ elasticNetParam = 0.9
-      2042.678648
-    1318.955805
-     0.49054215
-   The best loss value of mean absolute error = 1318.23 was obtained when the maxIter was set to 1000, regParam=0.1, solver=”normal”, labelCol=”loss”, elasticNetParam=0.7.
-
-# Random Forest Regression
-For Random Forest Regressor, we change the maximum number of trees, maximum depth in different combinations and the results are tabulated as follows:
-      Model
-    Param List
-    Root Mean Squared Error
-     Mean Absolute error
-      R^2
-    Random Forest Regressor
-featuresCol = ‘features’ labelCol = ‘loss’ numTrees = 2 maxDepth = 2
-seed = 42
- 2422.76
- 1557.52
-  0.304622
-     Random Forest Regressor
- featuresCol = ‘features’ labelCol = ‘loss’ numTrees = 20 maxDepth = 5
-seed = None
-   2220.86
-   1412.62
-    0.445699
-     Random Forest Regressor
-    featuresCol = ‘features’ labelCol = ‘loss’ numTrees = 50 maxDepth = 5
-seed = None
-    2149.69
-     1408.14
-      0.435359
-    Random Forest Regressor
-   featuresCol = ‘features’ labelCol = ‘loss’ numTrees = 100 maxDepth = 10
-seed = None
-  2179.99
-   1412.11
-    0.426779
-   The best loss value (Mean Absolute Error = 1408.14) was obtained when number of trees is 50, maximum depth is 5.
-
-# Gradient Boosting Regressor
-      Model
-    Param List
-     Root Mean Squared Error
-   Mean Absolute error
-     R^2
-    GBT Regressor
-featuresCol = ‘features’ labelCol = ‘loss’ maxIter = 20
-stepSize= 0.1
-seed = None
-  2001.91
-1295.43
-  0.500266
-     GBT Regressor
- featuresCol = ‘features’ labelCol = ‘loss’ maxIter = 10
-stepSize = 0.2
-seed = None
-    1992.67
- 1302.87
-    0.505395
-     GBT Regressor
- featuresCol = ‘features’ labelCol = ‘loss’ maxIter = 30
-stepSize = 0.3
-seed = None
-    1988.10
- 1258.78
-    0.527099
-     GBT Regressor
-    featuresCol = ‘features’ labelCol = ‘loss’ maxIter = 50
-stepSize = 0.3
-seed = None
-     1965.69
-    1225.3
-     0.527921
+     
    For Gradient Boosting Regressor, we change the maximum number of iterations, Step Size in different combinations and the results are tabulated as follows:
 The best loss value (Mean Absolute Error = 1225.3) was obtained when maximum iterations is 50 and step size is 0.3.
 # FUTURE IMPROVEMENTS
